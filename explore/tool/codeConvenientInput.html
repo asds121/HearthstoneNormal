@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>炉石普通卡片代码录入</title>
+	<style>
+		* {
+			font-size: 20px;
+		}
+		
+		body {
+			background: rgb(99, 50, 50);
+			color: white;
+			display: flex;
+			align-items: center;
+			max-width: 400px;
+		}
+		
+		span {
+			color: darkorange;
+		}
+		
+		input {
+			width: 200px;
+		}
+		
+		input.long {
+			width: 300px;
+		}
+		
+		label {
+			height: 100%;
+		}
+		
+		select {
+			width: 160px;
+			text-align: center;
+		}
+		
+		select.min {
+			width: 80px;
+		}
+		
+		textarea {
+			width: 380px;
+			height: 80px;
+		}
+		
+		#ys,
+		#diy {
+			margin-left: -80px;
+		}
+		
+		#preview {
+			position: absolute;
+			top: 50px;
+			left: 294px;
+			width: 100px;
+			height: 140px;
+			background: gray;
+			text-align: center;
+			line-height: 140px;
+			border: 1px solid black;
+			border-radius: 5%;
+		}
+		
+		#preview.hs_hunter {
+			background: rgb(3, 83, 7);
+		}
+		
+		#preview.hs_mage {
+			background: rgb(47, 77, 229);
+		}
+		
+		#preview.hs_paladin {
+			background: rgb(220, 220, 36);
+		}
+		
+		#preview.hs_druid {
+			background: rgb(169, 62, 8);
+		}
+		
+		#preview.hs_priest {
+			background: rgb(198, 197, 196);
+		}
+		
+		#preview.hs_warlock {
+			background: rgb(169, 10, 116);
+		}
+		
+		#preview.hs_corruptor {
+			background: rgb(71, 5, 49);
+		}
+		
+		#preview.hs_rogue {
+			background: rgb(85, 78, 78);
+		}
+		
+		#preview.hs_shaman {
+			background: rgb(20, 2, 93);
+		}
+		
+		#preview.hs_warrior {
+			background: rgb(128, 3, 3);
+		}
+		
+		#precost {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			top: -5%;
+			left: -5%;
+			text-align: center;
+			line-height: 20px;
+			text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+			z-index: 1;
+			background: rgb(58, 136, 208);
+			box-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+		}
+		
+		#preimg {
+			position: absolute;
+			top: -10%;
+			left: 15%;
+			width: 70%;
+			height: 70%;
+			border: 1px solid black;
+			border-radius: 50%;
+			background: red;
+		}
+		
+		#preimg.spell {
+			left: 15%;
+			top: -2%;
+			width: 70%;
+			height: 50%;
+			border-radius: 5%;
+		}
+		
+		#preimg.weapon {
+			left: 15%;
+			top: -2%;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+		}
+		
+		#preband {
+			position: absolute;
+			left: 5%;
+			top: 40%;
+			width: 90%;
+			height: 10%;
+			border: 1px solid black;
+			border-radius: 5%;
+			background: orange;
+			z-index: 1;
+		}
+		
+		#preintro {
+			position: absolute;
+			left: 5%;
+			top: 55%;
+			width: 90%;
+			height: 35%;
+			border: 1px solid black;
+			border-radius: 5%;
+			background: rgb(162, 157, 157);
+			z-index: 1;
+		}
+		
+		#prerarity {
+			position: absolute;
+			width: 10px;
+			height: 15px;
+			top: -10%;
+			left: calc(50% - 5px);
+			border: 1px solid black;
+			border-radius: 50%;
+			background: white;
+		}
+		
+		#prerarity.essential {
+			display: none;
+		}
+		
+		#prerarity.rare {
+			background: rgb(51, 53, 202);
+		}
+		
+		#prerarity.epic {
+			background: rgb(180, 48, 180);
+		}
+		
+		#prerarity.legend {
+			background: rgb(231, 122, 54);
+		}
+		
+		#prerkind {
+			position: absolute;
+			left: 25%;
+			top: 90%;
+			width: 50%;
+			height: 16px;
+			border: 1px solid black;
+			border-radius: 5%;
+			background: orange;
+			font-size: 14px;
+			line-height: 16px;
+			text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+			display: none;
+		}
+		
+		#preatk {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			top: 90%;
+			left: 0;
+			text-align: center;
+			line-height: 20px;
+			text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+		}
+		
+		#prehp {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			top: 90%;
+			left: calc(100% - 20px);
+			text-align: center;
+			line-height: 20px;
+			text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			window.$ = {
+				find: function(str) {
+					return document.querySelector(str);
+				},
+			};
+			var update = function() {
+				var tp = $.find("#type").value;
+				var monster = tp != "法术" && tp != "武器";
+				var zz = $.find(".zhongzu");
+				var sc = $.find(".shencai");
+				if (tp == "法术") {
+					zz.style.display = "none";
+					sc.style.display = "none";
+					$.find("#preatk").style.display = "none";
+					$.find("#prehp").style.display = "none";
+				} else {
+					if (tp == "武器") {
+						zz.style.display = "none";
+					} else {
+						zz.style.display = "";
+					}
+					sc.style.display = "";
+					$.find("#preatk").style.display = "";
+					$.find("#prehp").style.display = "";
+				}
+				//预览变化
+				var constant = {
+					type: {
+						"随从（白板）": "monster",
+						"随从（效果）": "monster",
+						"法术": "spell",
+						"武器": "weapon",
+					},
+					rarity: {
+						essential: "基础",
+						ordinary: "普通",
+						rare: "稀有",
+						epic: "史诗",
+						legend: "传说",
+					},
+					job: {
+						"hs_mage": "法师",
+						"hs_warrior": "战士",
+						"hs_priest": "牧师",
+						"hs_hunter": "猎人",
+						"hs_warlock": "术士",
+						"hs_druid": "德鲁伊",
+						"hs_paladin": "圣骑士",
+						"hs_rogue": "潜行者",
+						"hs_shaman": "萨满祭司",
+						"hs_corruptor": "腐化者",
+						"hs_demonhunter": "恶魔猎手",
+						"hs_deathknight": "死亡骑士",
+						"hs_neutral": "中立",
+					},
+					rkind: {
+						dragon: "龙",
+						totem: "图腾",
+						demon: "恶魔",
+						wildbeast: "野兽",
+						murloc: "鱼人",
+						machine: "机械",
+						none: "无",
+						pirate: "海盗",
+						elemental: "元素",
+						quilboar: "野猪人",
+						naga: "纳迦",
+						goblin: "哥布林",
+					},
+				};
+				constant.t = function(str) {
+					var obj = constant[str];
+					if (!obj) return;
+					var res = {};
+					for (var i in obj) {
+						res[obj[i]] = i;
+					}
+					return res;
+				};
+				var str2 = "";
+				var zwm = $.find("#zwm").value;
+				var token = $.find("#ys").checked;
+				var diy = $.find("#diy").checked;
+				var xyd = $.find("#rarity").value;
+				var rare = constant.t("rarity")[xyd];
+				var intro = $.find("#intro").value;
+				var job = $.find("#job").value;
+				var job2 = constant.t("job")[job];
+				var rkind = $.find("#rkind").value;
+				var atk = $.find("#atk").value;
+				var hp = $.find("#hp").value;
+				var cost = $.find("#cost").value;
+				$.find("#preview").className = job2;
+				$.find("#preimg").className = constant.type[tp];
+				$.find("#precost").innerHTML = cost;
+				$.find("#prerarity").className = rare;
+				if (monster) {
+					if (rkind == "无") $.find("#prerkind").style.display = "none";
+					else $.find("#prerkind").style.display = "block";
+					$.find("#prerkind").innerHTML = rkind;
+				} else {
+					$.find("#prerkind").style.display = "none";
+				}
+				$.find("#preatk").innerHTML = atk;
+				$.find("#prehp").innerHTML = hp;
+				//生成文件名
+				var name = $.find("#name").value;
+				if (!name) return;
+				var str = "hs_";
+				var arr = name.split(" ");
+				for (var i = 0; i < arr.length; i++) {
+					str += arr[i][0].toUpperCase() + arr[i].slice(1);
+				}
+				if (monster) str += "_monster";
+				var clg = str;
+				str += ".jpg";
+				$.find("#file").value = str;
+				//生成代码
+				if (monster) {
+					str2 = '"' + name + '":[' + '"' + zwm + '",' + '"' + rare + '",' + '"' + intro + '",[' + '"' + (tp == "随从（效果）" ? "HS_effect" : "HS_normal") + '",' + '"' + $.find("#cost").value + '",' + '"' + (job == "中立" ? "" : job2) + '",' + '"' + constant.t("rkind")[rkind] + '",' + '"' + atk + '",' + '"' + hp + '"' + ']' + ((token || diy) ? (",[" + (token ? '"token",' : "") + (diy ? '"diy"' : "") + "]").replace(",]", "]") : "") + '],';
+				} else {
+					str2 = clg + ':[' + '"' + zwm + '",' + '"' + rare + '",' + '"' + intro + '",' + $.find("#cost").value + ',' + '"' + job2 + '"' + (tp == "武器" ? (',' + atk + ',' + hp) : "") + (token ? ',["token"]' : "") + '],';
+				}
+				$.find("#code").value = str2;
+			};
+			$.find("#name").onchange = update;
+			$.find("#zwm").onchange = update;
+			$.find("#type").onchange = update;
+			$.find("#ys").onchange = update;
+			$.find("#diy").onchange = update;
+			$.find("#rarity").onchange = update;
+			$.find("#intro").onchange = update;
+			$.find("#cost").onchange = update;
+			$.find("#job").onchange = update;
+			$.find("#rkind").onchange = update;
+			$.find("#atk").onchange = update;
+			$.find("#hp").onchange = update;
+		};
+	</script>
+</head>
+
+<body>
+	<div>
+		<span>这是一个生成炉石普通卡牌信息代码的工具</span>
+		<br>
+		<label for="name">英文名</label>
+		<input id="name" type="text" value="" autofocus>
+		<br>
+		<label for="zwm">中文名</label>
+		<input id="zwm" type="text" value="">
+		<br>
+		<label for="type">类型</label>
+		<select name="" id="type">
+			<option>随从（白板）</option>
+			<option selected>随从（效果）</option>
+			<option>法术</option>
+			<option>武器</option>
+		</select>
+		<label for="ys">衍生</label>
+		<input type="checkbox" name="" id="ys">
+		<label for="diy">diy</label>
+		<input type="checkbox" name="" id="diy">
+		<br>
+		<label for="rarity">稀有度</label>
+		<select name="" id="rarity">
+			<option>基础</option>
+			<option selected>普通</option>
+			<option>稀有</option>
+			<option>史诗</option>
+			<option>传说</option>
+		</select>
+		<br>
+		<label for="intro">介绍</label>
+		<br>
+		<textarea name="" id="intro" cols="30" rows="10"></textarea>
+		<br>
+		<label for="cost">费用</label>
+		<select class="min" name="" id="cost">
+			<option>0</option>
+			<option selected>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+		</select>
+		<br>
+		<label for="job">职业</label>
+		<select name="" id="job">
+			<option selected>中立</option>
+			<option>牧师</option>
+			<option>法师</option>
+			<option>战士</option>
+			<option>术士</option>
+			<option>猎人</option>
+			<option>德鲁伊</option>
+			<option>潜行者</option>
+			<option>萨满祭司</option>
+			<option>圣骑士</option>
+			<option>腐化者</option>
+			<option>恶魔猎手</option>
+			<option>死亡骑士</option>
+		</select>
+		<br>
+		<div class="zhongzu">
+			<label for="rkind">种族</label>
+			<select class="min" id="rkind">
+				<option selected>无</option>
+				<option>鱼人</option>
+				<option>野兽</option>
+				<option>机械</option>
+				<option>龙</option>
+				<option>恶魔</option>
+				<option>海盗</option>
+				<option>元素</option>
+				<option>纳迦</option>
+				<option>图腾</option>
+				<option>野猪人</option>
+				<option>哥布林</option>
+			</select>
+		</div>
+		<div class="shencai">
+			<label>身材</label>
+			<label for="atk">攻击力</label>
+			<select class="min" id="atk">
+				<option>0</option>
+				<option selected>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+			</select>
+			<label for="hp">生命值</label>
+			<select class="min" id="hp">
+				<option>0</option>
+				<option selected>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+			</select>
+		</div>
+		<div id="preview">
+			<div id="precost">1</div>
+			<div id="preimg"></div>
+			<div id="preband"></div>
+			<div id="preintro">
+				<div id="prerarity"></div>
+			</div>
+			<div id="prerkind">无</div>
+			<div id="preatk">1</div>
+			<div id="prehp">1</div>
+		</div>
+		<hr>
+		<span>结果</span>
+		<br>
+		<label for="file">文件名</label>
+		<input class="long" id="file" type="text" value="">
+		<br>
+		<label for="code">卡片代码</label>
+		<br>
+		<textarea name="" id="code" cols="30" rows="10"></textarea>
+	</div>
+</body>
+
+</html>

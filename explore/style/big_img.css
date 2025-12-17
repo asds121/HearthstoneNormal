@@ -1,0 +1,69 @@
+#arena.hscss.hs_exchange.hs_big_img:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me {
+	left: 160px !important;
+	transform-origin: right;
+	transform: translateY(-210px) scale(2.8) !important;
+	z-index: 6;
+	pointer-events: none;
+}
+
+#arena.hscss.hs_exchange.hs_big_img>#control>.control {
+	transform: scale(1.5) translateY(60px) translateX(0px) !important;
+}
+
+#arena.hscss.hs_big_img>.hs_coin {
+	left: calc(100% - 280px);
+}
+
+@keyframes yd {
+	from {
+		left: 0px;
+	}
+
+	to {
+		left: -50px;
+	}
+}
+
+#arena.hscss.hs_big_img>.hs_coin.second>.img {
+	animation: yd 0.5s forwards;
+}
+
+#arena.hscss.hs_big_img>.hs_coin.result.second.gain {
+	left: calc(100% + 40px);
+	top: calc(100% + 56px);
+	transition: all 0.7s ease-out;
+}
+
+#arena.hscss.hs_big_img>.morezone {
+	left: calc(100% - 1060px);
+	top: calc(100% - 627px);
+	width: 245px !important;
+	height: 343px !important;
+	display: block;
+	border-radius: 5px;
+	background-size: 100% 100% !important;
+	z-index: 6;
+	transition: all 0s;
+	transform: scale(1.4);
+}
+
+#arena.hscss.hs_big_img.builddeck>.morezone {
+	transform: scale(1);
+}
+
+#arena.hscss.hs_big_img>.morezone:not(.viewhand) {
+	left: calc(100% - 1080px);
+	top: calc(100% - 490px);
+}
+
+#arena.hscss.hs_big_img>.morezone.viewhand {
+	left: calc(100% - 714px);
+	top: calc(100% - 590px);
+	z-index: 5;
+}
+
+#arena.hscss.hs_big_img.hs_view:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me {
+	transform: translateX(120px) translateY(-10px) scale(1.2);
+	z-index: 4;
+	pointer-events: none;
+}

@@ -1,0 +1,1478 @@
+@font-face {
+	font-family: shousha;
+	src: url("../../../../font/shousha.woff2");
+}
+
+/*调度阶段样式*/
+#arena.hscss>#me {
+	transform-origin: right;
+	transition: all 0.2 ease;
+}
+
+/*选中*/
+.card>.hs_tih,
+.card>.hs_tihwz {
+	display: none;
+	font-family: shousha;
+	font-weight: bold;
+	pointer-events: none;
+}
+
+#arena.hs_exchange>#me .card.selected {
+	margin-top: 0px;
+}
+
+#arena.hs_exchange>#me .card.selected>.hs_tih,
+#arena.hs_exchange>#me .card.selected>.hs_tihwz {
+	display: block;
+}
+
+.card>.hs_tih {
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	height: 80%;
+	background-image: url("../../resource/image/decoration/X.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.card>.hs_tihwz {
+	width: 80%;
+	height: 20px;
+	top: 90%;
+	left: 10%;
+	background-image: url("../../resource/image/decoration/tih.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	filter: none !important;
+	border-radius: 8px;
+	text-align: center;
+	font-size: 8px;
+	line-height: 20px;
+}
+
+/*确认按钮*/
+#arena.hscss.hs_exchange>#control>.control {
+	background-image: url("../../resource/image/decoration/bluebtn.png");
+	background-size: 150% 150%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	transform: scale(1.5) translateY(30px) translateX(-20px) !important;
+	box-shadow: none;
+}
+
+#arena.hscss.hs_exchange>#control>.control>div {
+	opacity: 0;
+}
+
+/*调度顶部文字*/
+#arena.hscss>.hs_band2 {
+	left: calc(100% - 850px);
+	top: calc(100% - 650px);
+	width: 473px;
+	height: 134px;
+	background-image: url("../../resource/image/decoration/band2.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	z-index: 4;
+}
+
+/*开局vs*/
+#arena.hscss>.hs_vs {
+	left: calc(100% - 700px);
+	top: calc(100% - 480px);
+	width: 240px;
+	height: 245px;
+	background-image: url("../../resource/image/decoration/vs.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	z-index: 4;
+}
+
+/*英雄全名*/
+#arena.hscss>.player>.hs_mefull,
+#arena.hscss>.player>.hs_enemyfull {
+	top: calc(100% - 6px);
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	font-family: shousha;
+	font-size: 16px;
+	line-height: 16px;
+	text-shadow: 2px 1px black, 2px -1px black, -2px 1px black, -2px -1px black;
+	transition: all 0.2s;
+}
+
+#arena.hscss>.player>.hs_mejob,
+#arena.hscss>.player>.hs_enemyjob {
+	top: calc(100% + 10px);
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	font-family: shousha;
+	font-size: 12px;
+	line-height: 12px;
+	text-shadow: 2px 1px black, 2px -1px black, -2px 1px black, -2px -1px black;
+	transition: all 0.2s;
+}
+
+/*硬币*/
+@keyframes rtt {
+	0% {
+		transform: scale(3) rotate(0deg);
+		filter: brightness(150%);
+	}
+
+	100% {
+		transform: scale(0.4) rotate(200deg);
+		filter: brightness(30%);
+	}
+}
+
+#arena.hscss>.hs_coin {
+	left: calc(100% - 340px);
+	top: calc(100% - 366px);
+	width: 96px;
+	height: 96px;
+	z-index: 1;
+	animation: rtt 1s linear forwards;
+}
+
+#arena.hscss>.hs_coin>.comet1,
+#arena.hscss>.hs_coin>.comet2 {
+	width: 100px;
+	height: 100px;
+	background-image: url("../../resource/image/decoration/comet.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#arena.hscss>.hs_coin>.comet2 {
+	transform: rotate(180deg);
+}
+
+/*正面图案*/
+#arena.hscss>.hs_coin>.img {
+	width: 100%;
+	height: 100%;
+	background-image: url("../../resource/image/decoration/coin.png");
+	background-repeat: no-repeat;
+	background-size: 200px 100px;
+	transition: all 0s;
+}
+
+#arena.hscss>.hs_coin.result {
+	animation: none;
+}
+
+#arena.hscss>.hs_coin.result.second.gain {
+	left: calc(100% + 156px);
+	top: calc(100% + 56px);
+	transition: all 0.7s ease-out;
+}
+
+#arena.hscss>.hs_coin.result>.comet1,
+#arena.hscss>.hs_coin.result>.comet2 {
+	display: none;
+}
+
+#arena.hscss>.hs_coin:not(.result)>.img {
+	visibility: hidden;
+}
+
+@keyframes yd {
+	from {
+		left: 0px;
+	}
+
+	to {
+		left: -76px;
+	}
+}
+
+#arena.hscss>.hs_coin.second>.img {
+	width: 100%;
+	height: 100%;
+	animation: yd 0.5s forwards;
+	background-position: -100px;
+	background-image: url("../../resource/image/decoration/coin.png");
+	background-repeat: no-repeat;
+	background-size: 200px 100px;
+	transition: all 0s;
+}
+
+/*提示先后攻*/
+#arena.hscss>.arrowbang {
+	left: calc(100% - 480px);
+	top: calc(100% - 310px);
+	width: 340px;
+	height: 200px;
+	background-position: 0% -80px;
+	background-image: url("../../resource/image/decoration/bang.png");
+	background-repeat: no-repeat;
+	background-size: 340px 200px;
+	text-align: center;
+	font-family: shousha;
+	font-weight: bolder;
+	font-size: 20px;
+	text-shadow: 0 1px 1px black, 0 -1px 1px black, -1px 0 1px black, 1px 0 1px black, 0 1px 1px black, 0 -1px 1px black, -1px 0 1px black, 1px 0 1px black, 0 1px 1px black, 0 -1px 1px black, -1px 0 1px black, 1px 0 1px black;
+	line-height: 120px;
+	z-index: 7;
+}
+
+/*黑场*/
+#arena.hscss.hs_black * {
+	filter: brightness(0%) !important;
+	display: none;
+}
+
+/*暗场*/
+#arena.hs_exchange2>:not(#control):not(#me):not(.bright) {
+	filter: brightness(25%);
+	pointer-events: none !important;
+}
+
+/*恢复*/
+#arena.hscss.hs_exchange2.recovering>div:not(#control):not(#me):not(.bright) {
+	animation: recovering 3s forwards;
+}
+
+@keyframes recovering {
+	100% {
+		filter: brightness(100%);
+	}
+}
+
+#arena.hs_exchange2>.medeckcontainer,
+#arena.hs_exchange2>.enemydeckcontainer,
+#arena.hs_exchange2>.hs_endbtn {
+	transition: all 0s !important;
+}
+
+/*回合开始*/
+#arena.hscss>.hs_myturn {
+	width: 800px;
+	height: 245px;
+	left: calc(100% - 1000px);
+	top: calc(100% - 510px);
+	transition: all 0.5s;
+	pointer-events: none;
+	opacity: 0;
+	transform: scale(0);
+	z-index: 5;
+}
+
+#arena.hscss>.hs_myturn.active {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#arena.hscss>.hs_myturn>.hs_rune {
+	left: -10%;
+	width: 120%;
+	height: 200%;
+	background-image: url("../../resource/image/decoration/rays.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+
+#arena.hscss>.hs_myturn>.hs_img {
+	width: 100%;
+	height: 100%;
+	background-image: url("../../resource/image/decoration/your_turn.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	z-index: 2;
+}
+
+#arena.hscss>.hs_myturn>.hs_img>.hs_img_text {
+	left: 36%;
+	top: 58%;
+	width: 30%;
+	height: 20%;
+	color: gold;
+	text-align: center;
+	font-size: 40px;
+	text-shadow: 4px 4px 8px black, -4px -4px 8px black, 4px -4px 8px black, -4px 4px 8px black;
+}
+
+/*英雄边框隐藏*/
+#arena.hscss>.player:not(.minskin),
+#arena.hscss>.medeckcontainer>.player,
+#arena.hscss>.enemydeckcontainer>.player,
+#arena.hscss>.medeckcontainer>.player>.decklencontainer,
+#arena.hscss>.enemydeckcontainer>.player>.decklencontainer {
+	background: rgba(0, 0, 0, 0);
+	box-shadow: none;
+}
+
+/*身份和玩家的手牌数隐藏*/
+#arena.hscss.hs_preinit>.player,
+#arena.hscss.hs_preinit>.monsterzone,
+#arena.hscss>.player>.identity,
+#arena.hscss>.player>.dieidentity,
+#arena.hscss>.player>.count,
+#arena.hscss.hs_kaichang>.player>.hs_atk {
+	display: none;
+}
+
+#arena.hscss.hs_kaichang>.player {
+	pointer-events: none;
+}
+
+#arena.hscss>.player.selectable::before {
+	box-shadow: none !important;
+}
+
+#arena.hscss>.player.selectable:not(.chaofeng)>.avatar,
+#arena.hscss>.player.selectable.chaofeng>.hs_cf {
+	filter: drop-shadow(0 -4px 4px red);
+}
+
+#arena.hscss.hs_kaichang>.player,
+#arena.hscss.hs_kaichang>.player>.hp,
+#arena.hscss>.player.selectable::before {
+	transition: all 0s;
+}
+
+#arena.hscss>.player.minskin.chaofeng:not(.qianxing) {
+	border-radius: 20px 20px 50% 50%;
+}
+
+/*英雄圆角*/
+#arena.hscss[data-number='2']>.player.player:not(.minskin):not(.attackable) {
+	border-radius: 50% 50% 0% 0%;
+	box-shadow: none !important;
+}
+
+#arena.hscss[data-number='2']>.player.player:not(.minskin)>.avatar {
+	box-shadow: none;
+}
+
+/*英雄位置*/
+#arena.hscss[data-number='2']>.player.player[data-position='0'],
+#arena.hscss[data-number='2']>.player.player[data-position='1'] {
+	left: calc(100% - 678px);
+}
+
+#arena.hscss[data-number='2']>.player.player[data-position='0'] {
+	top: calc(100% - 205px);
+}
+
+#arena.hscss[data-number='2']>.player.player[data-position='1'] {
+	top: calc(100% - 645px);
+}
+
+#arena.hscss[data-number='2']>.player.player.diyleader>.avatar {
+	top: 20px;
+}
+
+/*开局动画*/
+#arena.hscss.hs_kaichang.hs_kaichang2[data-number='2']>.player.player[data-position='0'],
+#arena.hscss.hs_kaichang.hs_kaichang2[data-number='2']>.player.player[data-position='1'] {
+	transform: perspective(100px) translateZ(60px);
+	top: calc(100% - 500px);
+	z-index: 12;
+}
+
+#arena.hscss.hs_kaichang.hs_kaichang2[data-number='2']>.player.player[data-position='1'] {
+	left: calc(100% - 940px);
+}
+
+#arena.hscss.hs_kaichang.hs_kaichang2[data-number='2']>.player.player[data-position='0'] {
+	left: calc(100% - 388px);
+}
+
+#arena.hscss.hs_kaichang:not(.hs_kaichang2)[data-number='2']>.player.player[data-position='0'],
+#arena.hscss.hs_kaichang:not(.hs_kaichang2)[data-number='2']>.player.player[data-position='1'] {
+	transform: perspective(100px) translateZ(30px);
+	z-index: 12;
+}
+
+/*随从样式*/
+#arena.hscss>.player.minskin,
+#arena.hscss>.player.minskin>.avatar {
+	border-radius: 50% 50%;
+}
+
+#arena.hscss>.player.minskin {
+	width: 100px !important;
+	height: 140px !important;
+	transform: scale(0.86);
+}
+
+#arena.hscss>.player.minskin>.avatar {
+	background-repeat: no-repeat;
+	background-position: -49px -20px;
+	background-size: 213% 213% !important;
+	top: 0px;
+	left: 0px;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+/*随从遮罩*/
+#arena.hscss>.player.minskin>.hs_zhezhao {
+	width: 379px;
+	height: 479px;
+	top: calc(100% - 310px);
+	opacity: 1;
+	transform: scale(0.32);
+	left: calc(100% - 240px);
+	z-index: 3;
+	background-image: url("../../resource/image/decoration/zhezhao.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all 0.5s;
+}
+
+/*传说随从龙框---chuanshuo*/
+/*官方卡牌-guanfang*/
+#arena.hscss>.player.minskin.hs_legend>.hs_dragon {
+	width: 436px;
+	height: 325px;
+	top: calc(100% - 264px);
+	opacity: 1;
+	transform: scale(0.32);
+	left: calc(100% - 250px);
+	z-index: 3;
+	background-image: url("../../resource/image/decoration/dragon.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all 0.5s;
+}
+
+/*diy卡牌-DIY*/
+#arena.hscss>.player.minskin.hs_legend.hs_DIYfl>.hs_dragon {
+	width: 436px;
+	height: 325px;
+	top: calc(100% - 264px);
+	opacity: 1;
+	transform: scale(0.32);
+	left: calc(100% - 250px);
+	z-index: 3;
+	background-image: url("../../resource/image/decoration/dragon.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all 0.5s;
+}
+
+/*英雄技能遮罩*/
+#arena.hscss>.hs_hrsk>.frontface>.skillzhezhao {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	opacity: 1;
+	background-size: 140px 193px;
+	background-position: -24px -14px;
+	background-repeat: no-repeat;
+	transform: scale(1.05);
+	pointer-events: none;
+	background-image: url("../../resource/image/heroskill/skillzhezhao.png");
+	z-index: 4;
+}
+
+#arena.hscss>.hs_hrsk.used>.frontface>.skillzhezhao {
+	opacity: 0;
+}
+
+/*ZZADAN异画*/
+#arena.hscss>.player.minskin.hs_ZBYH>.avatar {
+	background-repeat: no-repeat;
+	background-position: -31px -26px;
+	background-size: 170% 170% !important;
+}
+
+/*diy卡牌样式*/
+#arena.hscss>.player.minskin.hs_DIYfl>.avatar {
+	background-repeat: no-repeat;
+	background-position: -59px -10px;
+	background-size: 213% 213% !important;
+}
+
+#arena.hscss>.player.minskin.hs_legend.hs_DIYfl>.avatar {
+	background-repeat: no-repeat;
+	background-position: -54px -18px;
+	background-size: 213% 213% !important;
+}
+
+/*testfl样式*/
+#arena.hscss>.player.testfl {
+	background: linear-gradient(to bottom, gray, black);
+	visibility: hidden;
+}
+
+/*字体颜色*/
+.hs_smaller {
+	color: red !important;
+}
+
+.hs_larger {
+	color: #29F646 !important;
+}
+
+.hs_start {
+	animation: hs_start .7s;
+}
+
+@keyframes hs_start {
+	0% {
+		font-size: 70px;
+		font-weight: lighter;
+	}
+
+	50% {
+		font-size: 30px;
+		font-weight: bolder;
+	}
+
+	100% {
+		font-size: 46px;
+		font-weight: lighter;
+	}
+}
+
+/*随从扳机闪电*/
+#arena.hscss>.player.minskin>.hs_bj.active,
+#arena.hscss>.hs_wp>.hs_bj.active,
+#arena.hscss>.player.minskin>.hs_jl.active,
+#arena.hscss>.player.minskin>.hs_jd.active,
+#arena.hscss>.player.minskin>.hs_xx.active {
+	z-index: 11;
+}
+
+#arena.hscss>.player.minskin>.hs_bj,
+#arena.hscss>.hs_wp>.hs_bj {
+	z-index: 10;
+}
+
+#arena.hscss>.player.minskin>.hs_wy,
+#arena.hscss>.hs_wp>.hs_wy {
+	z-index: 9;
+}
+
+#arena.hscss>.player.minskin>.hs_bj,
+#arena.hscss>.hs_wp>.hs_bj,
+#arena.hscss>.player.minskin>.hs_jl,
+#arena.hscss>.player.minskin>.hs_jd,
+#arena.hscss>.player.minskin>.hs_xx,
+#arena.hscss>.player.minskin>.hs_wy,
+#arena.hscss>.hs_wp>.hs_wy {
+	left: 35px;
+	top: 118px;
+	pointer-events: none;
+	border-radius: 50%;
+	z-index: 10;
+	transition: all 0.5s;
+}
+
+#arena.hscss>.player.minskin>.hs_bj,
+#arena.hscss>.hs_wp>.hs_bj {
+	width: 30px;
+	height: 35px;
+}
+
+#arena.hscss>.hs_wp.hs_wp>.hs_bj {
+	left: 46px;
+	top: 84px;
+}
+
+#arena.hscss>.player.minskin>.hs_wy,
+#arena.hscss>.hs_wp>.hs_wy {
+	width: 35px;
+	height: 28px;
+	filter: drop-shadow(0 2px 1px black) drop-shadow(0 -1px 1px black);
+}
+
+#arena.hscss>.hs_wp.hs_wp>.hs_wy {
+	left: 46px;
+	top: 84px;
+}
+
+#arena.hscss>.player.minskin>.hs_jl {
+	width: 35px;
+	height: 35px;
+}
+
+#arena.hscss>.player.minskin.jili>.hs_jl {
+	background-image: url("../../resource/image/decoration/jili.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#arena.hscss>.player.minskin>.hs_jd {
+	top: 115px;
+	width: 28px;
+	height: 38px;
+}
+
+#arena.hscss>.player.minskin.jvdu>.hs_jd {
+	background-image: url("../../resource/image/decoration/jvdu.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#arena.hscss>.player.minskin.jvdu>.hs_jd.active {
+	filter: drop-shadow(4px 0 2px #29F646) drop-shadow(-4px 0 2px #29F646) drop-shadow(0 -4px 2px #29F646) drop-shadow(0 4px 2px #29F646);
+}
+
+#arena.hscss>.player.minskin.banji>.hs_bj,
+#arena.hscss>.hs_wp.banji>.hs_bj {
+	background-image: url("../../resource/image/decoration/trigger.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#arena.hscss>.player.minskin.banji>.hs_bj.active,
+#arena.hscss>.hs_wp.banji>.hs_bj.active,
+#arena.hscss>.player.minskin.jili>.hs_jl.active {
+	filter: drop-shadow(4px 0 yellow) drop-shadow(-4px 0 yellow) drop-shadow(0 -4px yellow) drop-shadow(0 4px yellow);
+}
+
+#arena.hscss>.player.minskin.wangyu>.hs_wy,
+#arena.hscss>.hs_wp.wangyu>.hs_wy {
+	background-image: url("../../resource/image/decoration/deathrattle.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#arena.hscss>.player.minskin.wywy.wangyu>.hs_wy,
+#arena.hscss>.hs_wp.wywy.wangyu>.hs_wy {
+	background-image: url("../../resource/image/decoration/redskull.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	filter: none;
+	animation: flyto 1s;
+}
+
+@keyframes flyto {
+	0% {
+		transform: translateY(-30px) scale(1.4);
+	}
+
+	100% {
+		transform: translateY(-100px) scale(6);
+	}
+}
+
+/*进攻特效*/
+#arena.hscss>.player.hs_atkprepare {
+	z-index: 99;
+}
+
+#arena.hscss>.player.hs_atkprepare[data-position='0'] {
+	transform: perspective(100px) rotateX(6deg) translateY(50px) translateZ(30px);
+	animation: jgme 1s;
+}
+
+#arena.hscss>.player.hs_atkprepare[data-position='1'] {
+	transform: perspective(100px) translateY(-18px) translateZ(30px);
+	animation: jgenemy 1s;
+}
+
+@keyframes jgme {
+	0% {
+		transform: translateY(0px) translateZ(0px);
+	}
+
+	50% {
+		transform: perspective(100px) translateY(63px) translateZ(38px);
+	}
+
+	100% {
+		transform: perspective(100px) rotateX(6deg) translateY(50px) translateZ(30px);
+	}
+}
+
+@keyframes jgenemy {
+	0% {
+		transform: translateY(0px) translateZ(0px);
+	}
+
+	30% {
+		transform: perspective(100px) rotateX(-2deg) translateY(-60px) translateZ(38px);
+	}
+
+	100% {
+		transform: perspective(100px) translateY(-18px) translateZ(30px);
+	}
+}
+
+#arena.hscss>.player.minskin.hs_atkprepare[data-enemy='0'] {
+	transform: perspective(100px) translateY(8px) translateZ(10px) scale(0.9);
+}
+
+#arena.hscss>.player.minskin.hs_atkprepare[data-enemy='1'] {
+	transform: perspective(100px) translateY(-8px) translateZ(10px) scale(0.9);
+}
+
+/*随从异能*/
+/*激怒*/
+#arena.hscss>.player.minskin>.avatar>.hs_jinu {
+	animation: game_start 0.5s;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 4;
+	pointer-events: none;
+	border-radius: 50%;
+	opacity: 0;
+}
+
+#arena.hscss>.player.minskin.jinu>.avatar>.hs_jinu,
+#arena.hscss>.player.minskin.kuangbao>.avatar>.hs_jinu {
+	opacity: 1;
+	box-shadow: inset 0 0 20px 14px rgba(255, 0, 0, 0.7);
+}
+
+#arena.hscss>.player.minskin>.hs_gh,
+#arena.hscss>.hs_wp>.hs_gh {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	z-index: -1;
+	pointer-events: none;
+	transition: all 0.5s;
+	box-shadow: 30px 0 10px rgba(255, 255, 165, 0.4), -30px 0 10px rgba(255, 255, 165, 0.4);
+	opacity: 0;
+}
+
+#arena.hscss>.hs_wp.hs_wp>.hs_gh {
+	left: 15%;
+	top: 15%;
+	width: 70%;
+	height: 70%;
+}
+
+#arena.hscss>.player.minskin.guanghuan>.hs_gh,
+#arena.hscss>.hs_wp.guanghuan>.hs_gh {
+	animation: gh 3s infinite;
+}
+
+@keyframes gh {
+	40% {
+		opacity: 0;
+	}
+
+	60% {
+		opacity: 1;
+	}
+}
+
+#arena.hscss>.player.minskin>.hs_zh {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	transform: scale(0.4);
+	z-index: -1;
+	background-image: url("../../resource/image/decoration/zhanhou.png");
+	background-size: 100px 100px;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all 0.5s;
+}
+
+#arena.hscss>.player.minskin.zhanhou>.hs_zh {
+	animation: zh 1.4s;
+	opacity: 0;
+}
+
+@keyframes zh {
+	0% {
+		transform: translateY(80px) scale(3.8);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(80px) scale(3.8);
+		opacity: 0;
+	}
+}
+
+#arena.hscss>.hs_wp>.hs_zh {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	transform: scale(0.4);
+	z-index: -1;
+	background-image: url("../../resource/image/decoration/zhanhou_weapon.png");
+	background-size: 100px 100px;
+	background-position: 50% 45%;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all 0.5s;
+}
+
+#arena.hscss>.hs_wp.zhanhou>.hs_zh {
+	animation: wpzh 1.4s;
+	opacity: 0;
+}
+
+@keyframes wpzh {
+	0% {
+		transform: scale(3);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(3);
+		opacity: 0;
+	}
+}
+
+#arena.hscss>.player.minskin>.hs_cof {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	transform: scale(0);
+	z-index: -1;
+	background-image: url("../../resource/image/decoration/chongfeng.png");
+	background-size: 100px 100px;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	transition: all 0.5s;
+}
+
+#arena.hscss>.player.minskin.chongfeng2>.hs_cof {
+	animation: cof 1s;
+}
+
+@keyframes cof {
+	0% {
+		transform: translateY(55px) scale(3.2);
+		opacity: 1;
+		filter: hue-rotate(-60deg);
+	}
+
+	100% {
+		transform: translateY(55px) scale(3.2);
+		opacity: 0;
+		filter: hue-rotate(-60deg);
+	}
+}
+
+#arena.hscss>.player.minskin>.hs_mm {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	z-index: 4;
+	pointer-events: none;
+	transition: all 0.5s;
+	opacity: 0;
+}
+
+#arena.hscss>.player.minskin.momian>.hs_mm {
+	background-image: url("../../resource/image/decoration/momian.png");
+	animation: qx 2s alternate infinite;
+}
+
+#arena.hscss>.player.minskin>.hs_qx {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	z-index: 4;
+	pointer-events: none;
+	transition: all 0.5s;
+	opacity: 0;
+}
+
+#arena.hscss>.player.minskin.qianxing>.hs_qx {
+	background-image: url("../../resource/image/decoration/qianxing.png");
+	animation: qx 5s alternate infinite;
+}
+
+@keyframes qx {
+	0% {
+		opacity: 0.6;
+	}
+
+	100% {
+		opacity: 0.9;
+	}
+}
+
+#arena.hscss>.player.minskin>.hs_cm1,
+#arena.hscss>.player.minskin>.hs_cm2 {
+	border-radius: 50%;
+	opacity: 0;
+	z-index: 9;
+	transition: all 0.5s;
+	pointer-events: none;
+	background-image: url("../../resource/image/decoration/chenmo.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 0;
+	height: 0;
+	will-change: clip-path, transform, opacity;
+}
+
+#arena.hscss>.player.minskin>.hs_cm1 {
+	top: -40px;
+	left: -32px;
+	transform: perspective(200px) rotateY(-35deg) rotateX(40deg) rotate(0deg) scale(1);
+}
+
+#arena.hscss>.player.minskin>.hs_cm2 {
+	top: -30px;
+	left: -10px;
+	transform: perspective(200px) rotateX(30deg) rotateY(50deg) rotate(360deg) scale(1);
+}
+
+#arena.hscss>.player.minskin.chenmo>.hs_cm1,
+#arena.hscss>.player.minskin.chenmo>.hs_cm2 {
+	filter: drop-shadow(0 0 1px rgba(255, 0, 0, 0.4)) drop-shadow(0 0 2px rgba(255, 0, 255, 0.4));
+}
+
+#arena.hscss>.player.minskin.chenmo>.hs_cm1 {
+	width: 160px;
+	height: 160px;
+	animation: spin1 48s linear infinite;
+}
+
+#arena.hscss>.player.minskin.chenmo>.hs_cm2 {
+	width: 180px;
+	height: 180px;
+	animation: spin2 29s linear infinite;
+}
+
+@keyframes spin1 {
+	0% {
+		transform: perspective(200px) rotateY(-35deg) rotateX(40deg) rotate(0deg) scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: perspective(200px) rotateY(-35deg) rotateX(40deg) rotate(360deg) scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes spin2 {
+	0% {
+		transform: perspective(200px) rotateX(30deg) rotateY(50deg) rotate(360deg) scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: perspective(200px) rotateX(30deg) rotateY(50deg) rotate(0deg) scale(1);
+		opacity: 1;
+	}
+}
+
+#arena.hscss>.player:not(.minskin)>.hs_dj,
+#arena.hscss>.player.minskin>.hs_dj {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	opacity: 0;
+	z-index: 6;
+	transition: all 0.5s;
+	pointer-events: none;
+	background: url("../../resource/image/decoration/dongjied.png");
+	background-size: 90px 90px;
+	background-position: 10% 10%;
+	background-repeat: no-repeat;
+	transform: scale(0.5);
+}
+
+#arena.hscss>.player:not(.minskin).dongjied>.hs_dj {
+	transform: translateX(38px) translateY(70px) scaleX(1.5) scaleY(1.8);
+	opacity: 1;
+}
+
+#arena.hscss>.player.minskin.dongjied>.hs_dj {
+	transform: translateX(7px) translateY(40px) scaleX(1.5) scaleY(1.8);
+	opacity: 1;
+}
+
+#arena.hscss>.player>.hs_my {
+	width: 100%;
+	height: 100%;
+	top: 4px;
+	border-radius: 50% 50%;
+	transform: scale(0.1);
+	opacity: 0;
+	z-index: 3;
+	transition: all 0.5s;
+	pointer-events: none;
+}
+
+.player.hidden>.hs_my {
+	visibility: visible !important;
+}
+
+#arena.hscss>.player.mianyi>.hs_my {
+	opacity: 0.6;
+	filter: hue-rotate(10deg) drop-shadow(0 0 3px cyan);
+	animation: mianyi 1s linear alternate infinite;
+}
+
+#arena.hscss>.player:not(.minskin).mianyi>.hs_my {
+	transform: scale(0.85);
+	border-radius: 50% 50% 0% 0%;
+}
+
+#arena.hscss>.player.minskin.mianyi>.hs_my {
+	transform: scale(1.18);
+	border-radius: 50%;
+}
+
+#arena.hscss>.hs_wp>.hs_my {
+	width: 100%;
+	height: 100%;
+	top: 4px;
+	border-radius: 50% 50%;
+	opacity: 0;
+	z-index: 3;
+	transition: all 0.5s;
+	pointer-events: none;
+}
+
+#arena.hscss>.hs_wp.wpmianyi>.hs_my {
+	opacity: 0.6;
+	filter: hue-rotate(10deg) drop-shadow(0 0 3px cyan);
+	animation: mianyi 1s linear alternate infinite;
+	transform: scale(0.8);
+}
+
+@keyframes mianyi {
+	0% {
+		box-shadow: inset 0 0 8px 2px cyan, inset 0 0 8px 2px cyan, inset 0 0 20px cyan;
+	}
+
+	100% {
+		box-shadow: inset 0 0 2px 2px cyan, inset 0 0 2px 2px cyan, inset 0 0 60px cyan;
+	}
+}
+
+#arena.hscss>.player.minskin>.hs_cf {
+	z-index: -1;
+	left: -25%;
+	top: -16%;
+	width: 150%;
+	height: 140%;
+	transform: scale(0);
+	transition: all 1s;
+	background: url("../../resource/image/decoration/chaofeng.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#arena.hscss>.player.minskin.chaofeng>.hs_cf {
+	transform: scale(1);
+	animation: hs_scale 0.2s;
+}
+
+#arena.hscss>.player.minskin.chaofeng.qianxing>.hs_cf {
+	opacity: 0.4;
+}
+
+@keyframes hs_scale {
+	0% {
+		transform: scale(0.2);
+	}
+
+	80% {
+		transform: scale(1.3);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+#arena.hscss>.player.minskin>.hs_sd {
+	width: 100%;
+	height: 100%;
+	border-radius: 50% 50%;
+	transform: scale(0.1);
+	opacity: 0;
+	z-index: 12;
+	transition: all 0.5s;
+	pointer-events: none;
+	background: url("../../resource/image/decoration/shengdun.png");
+	background-size: 100px 100px;
+	background-repeat: no-repeat;
+}
+
+#arena.hscss>.player.minskin.shengdun>.hs_sd {
+	transform: translateY(50px) scale(2);
+	opacity: 0.8;
+}
+
+#arena.hscss>.player>.hs_fn,
+#arena.hscss>.player.superfengnu>.hs_fn::before,
+#arena.hscss>.player.superfengnu>.hs_fn::after {
+	width: 5px;
+	height: 30px;
+	border-radius: 50% 50%;
+	transform-origin: 50% 50%;
+	pointer-events: none;
+	z-index: 12;
+}
+
+#arena.hscss>.player.fengnu>.hs_fn,
+#arena.hscss>.player.superfengnu>.hs_fn {
+	background: white;
+	box-shadow: black 0px 0px 4px;
+	animation: fengnu 4s linear infinite;
+}
+
+#arena.hscss>.player.superfengnu>.hs_fn::before,
+#arena.hscss>.player.superfengnu>.hs_fn::after {
+	content: '';
+	position: absolute;
+	display: block;
+	background: white;
+	box-shadow: black 0px 0px 4px;
+}
+
+#arena.hscss>.player.superfengnu.fengnu>.hs_fn {
+	animation: fengnu 3s linear infinite;
+}
+
+#arena.hscss>.player.superfengnu>.hs_fn::before {
+	left: 25px;
+	top: 5px;
+	animation: fengnu 3.1s linear infinite;
+	animation-delay: 0.13s;
+}
+
+#arena.hscss>.player.superfengnu>.hs_fn::after {
+	left: -25px;
+	top: -5px;
+	animation: fengnu 3.3s linear infinite;
+	animation-delay: 0.17s;
+}
+
+@keyframes fengnu {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(360deg);
+		transform-origin: 30px 30px;
+	}
+
+	100% {
+		transform: rotate(720deg);
+		transform-origin: 90px 70px;
+	}
+}
+
+/*异能到此结束*/
+/*可进攻*/
+#arena.hscss>.player.minskin.attackable:not(.target):not(.selected):not(.chaofeng)>.avatar,
+#arena.hscss>.player.minskin.hs_legend.attackable:not(.target):not(.selected):not(.chaofeng)>.hs_dragon {
+	filter: drop-shadow(-7px -4px 2px #29F646) drop-shadow(10px -4px 2px #29F646) drop-shadow(0 -4px 2px #29F646);
+}
+
+#arena.hscss>.player.minskin.attackable:not(.target):not(.selected).chaofeng>.hs_cf {
+	filter: drop-shadow(-4px -2px 2px #29F646) drop-shadow(4px -2px 2px #29F646) drop-shadow(0 -2px 2px #29F646);
+}
+
+#arena.hscss>.player:not(.minskin).attackable:not(.target):not(.selected)>.avatar {
+	filter: drop-shadow(-5px -2px 2px #29F646) drop-shadow(5px -2px 2px #29F646) drop-shadow(0 -2px 2px #29F646);
+}
+
+#arena.hscss>.player.attackable {
+	cursor: pointer;
+}
+
+/*英雄技能可用*/
+#arena.hscss>.hs_hrsk.selectable {
+	filter: drop-shadow(3px -2px 1px #29F646) drop-shadow(-2px -2px 1px #29F646);
+	cursor: pointer;
+}
+
+#arena.hscss>.player::before {
+	transition: all 0s !important;
+	border-radius: 50% 50% 0% 0% !important;
+}
+
+#arena.hscss[data-number='2']>.player:not(.minskin).selected.attackable {
+	transform: none !important;
+}
+
+#arena.hscss[data-number='2']>.player:not(.minskin).glow_phase {
+	box-shadow: none !important;
+}
+
+/*场地*/
+#arena.hscss>.monsterzone,
+#arena.hscss>.zonearena {
+	pointer-events: none;
+}
+
+#arena.hscss>.monsterzone {
+	left: calc(100% - 1300px);
+	top: calc(100% - 769px);
+	width: 1404px;
+	height: 892px;
+	background-image: url("../../resource/image/decoration/field.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+/*特效区*/
+/*岩浆特效*/
+#arena.hscss>.zonearena {
+	z-index: 2;
+	opacity: 0;
+	transition: all 0.5s;
+	left: calc(100% - 790px);
+	top: calc(100% - 480px);
+	width: 360px;
+	height: 300px;
+	border-radius: 50px;
+}
+
+#arena.hscss>.zonearena.lava {
+	animation: lava 2s;
+	background-image: url("../../resource/image/decoration/lava.png");
+	background-size: 200px 100px;
+}
+
+#arena.hscss>.zonearena.lava_2 {
+	animation: lava_2 2s;
+	background-image: url("../../resource/image/decoration/lava.png");
+	background-size: 200px 100px;
+}
+
+#arena.hscss>.zonearena {
+	left: calc(100% - 1000px);
+	top: calc(100% - 480px);
+	width: 760px;
+	height: 300px;
+	border-radius: 50px;
+}
+
+#arena.hscss>.zonearena.lava {
+	animation: lava 2s;
+	background-image: url("../../resource/image/decoration/lava.png");
+	background-size: 200px 200px;
+}
+
+@keyframes lava {
+	0% {
+		background-position: 0% 0%;
+		transform: scale(0);
+		opacity: 0;
+		filter: hue-rotate(0deg);
+	}
+
+	20% {
+		background-position: 25% 75%;
+		transform: scale(1);
+		opacity: 1;
+		filter: hue-rotate(5deg);
+	}
+
+	100% {
+		background-position: 125% 375%;
+		transform: scale(1);
+		opacity: 0;
+		filter: hue-rotate(20deg);
+	}
+}
+
+@keyframes lava_2 {
+	0% {
+		background-position: 0% 0%;
+		transform: scale(0);
+		opacity: 0;
+		filter: hue-rotate(0deg);
+	}
+
+	20% {
+		background-position: 25% 75%;
+		transform: scale(1.7);
+		opacity: 1;
+		filter: hue-rotate(5deg);
+	}
+
+	100% {
+		background-position: 125% 375%;
+		transform: scale(1);
+		opacity: 0;
+		filter: hue-rotate(20deg);
+	}
+}
+
+/*旋风斩特效*/
+#arena.hscss>.zonearena.blade {
+	animation: blade 1.5s linear;
+	background-image: url("../../resource/image/decoration/blade.png");
+	background-repeat: no-repeat;
+	background-size: 200px 200px;
+	background-position: 50% 50%;
+}
+
+@keyframes blade {
+	0% {
+		transform: scale(0) rotate(0deg);
+		opacity: 0;
+	}
+
+	75% {
+		transform: scale(4) rotate(2720deg);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(4) rotate(3660deg);
+		opacity: 0;
+	}
+}
+
+/*仅触发动画*/
+.hs_anm_scale {
+	animation: hs_scale 0.2s;
+}
+
+/*手牌样式微调*/
+#arena.hscss>#me {
+	height: 120px !important;
+	z-index: 2;
+	pointer-events: none;
+}
+
+#arena.hscss>#me {
+	transform: translateY(34px);
+}
+
+#arena.hscss:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me>#handcards1 {
+	pointer-events: none;
+}
+
+#arena.hscss:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me>#handcards1>div {
+	left: calc(100% - 490px) !important;
+	width: 100px !important;
+	transition: all 0s;
+}
+
+#arena.hscss.hs_view:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me {
+	transform: translateX(106px) translateY(-10px) scale(1.16);
+	z-index: 4;
+	pointer-events: none;
+}
+
+#arena.hscss.hs_exchange:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me {
+	left: -90px !important;
+	transform-origin: right;
+	transform: translateY(-210px) scale(2);
+	z-index: 6;
+	pointer-events: none;
+}
+
+#arena.hscss.hs_exchange2:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me {
+	z-index: 6;
+}
+
+#arena.hscss.hs_view:not(.hs_kaichang):not(.single-handcard):not(.chess)>#me>#handcards1>div {
+	width: 100px !important;
+}
+
+#arena.hscss.selecting:not(.video)>#me .card {
+	opacity: 1;
+	border-radius: 10px;
+}
+
+#arena.hscss.selecting:not(.video)>#me .card.selectable {
+	filter: drop-shadow(0 -1px 1px #29F646) drop-shadow(-2px -1px 1px #29F646) drop-shadow(2px -1px 1px #29F646);
+}
+
+#arena.hscss.selecting:not(.video)>#me .card.selectable.active {
+	filter: drop-shadow(0 -1px 1px gold) drop-shadow(-2px -1px 1px gold) drop-shadow(2px -1px 1px gold);
+}
+
+#arena.hscss.selecting:not(.video)>#me .card.selectable::after {
+	box-shadow: none;
+}
+
+#arena.hscss:not(.video)>#me>#handcards1>div>.card {
+	pointer-events: auto;
+}
+
+#arena.hscss.hs_exchange2:not(.video)>#me>#handcards1>div>.card.selected {
+	filter: none;
+}
+
+.card.rdcreated,
+#arena.hscss>.card.thrown {
+	box-shadow: none !important;
+	width: 100px;
+	height: 140px;
+	background-size: 100% 100%;
+}
+
+.card.rdcreated {
+	margin-top: -15px;
+}
+
+.card.rdcreated .suit-num,
+.card.rdcreated .info {
+	display: none !important;
+}
+
+#arena.hscss.selecting .forcebutton .text {
+	margin: 4px;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+/*dialog美化*/
+#arena.hscss>.dialog.nobutton {
+	pointer-events: none;
+}
+
+#arena.hscss>.dialog:not(.faxian):not(.faxian4):not(.nobutton) {
+	left: calc(100% - 900px);
+	width: 600px;
+	height: 360px !important;
+	top: calc(100% - 466px);
+}
+
+#arena.hscss>.dialog.faxian:not(.nobutton) {
+	left: calc(100% - 1000px);
+	width: 800px;
+	height: 460px !important;
+	top: calc(100% - 566px);
+}
+
+#arena.hscss>.dialog.faxian .buttons,
+#arena.hscss>.dialog.faxian4 .buttons {
+	top: 300px;
+	width: 560px;
+	height: 360px;
+	transform: scale(2.5);
+}
+
+#arena.hscss>.dialog.faxian4:not(.nobutton) {
+	left: calc(100% - 1150px);
+	width: 1100px;
+	height: 460px !important;
+	top: calc(100% - 566px);
+}
+
+#arena.hscss>.dialog:not(.nobutton) .character {
+	box-shadow: none;
+}
+
+.dialog>.content-container>.content>.buttons>.button.character>:not(.button):not(.identity) {
+	display: none;
+}
+
+/*若画面偏左，可以取消注释
+#arena.hscss{
+    left:60px;
+}
+*/

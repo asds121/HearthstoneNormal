@@ -1,0 +1,61 @@
+.hs-main-window-back {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	z-index: 30;
+}
+
+.hs-main-window-center {
+	display: block;
+	position: absolute;
+	height: 60%;
+	width: 40%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: 50px solid;
+	/*padding: 50px;*/
+	border-image-source: url("../../resource/image/popup_window.png");
+	border-image-slice: 50 fill;
+}
+
+.hs-main-window-back-progress {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	z-index: 30;
+	background-color: rgba(221, 160, 221 0.5);
+}
+
+.hs-main-window-progress {
+	display: block;
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.player>.txcs-mask {
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 70;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+#hskzgj {
+	color: pink;
+	border: 1px solid orange;
+	border-radius: 5px;
+	padding: 5px;
+}
